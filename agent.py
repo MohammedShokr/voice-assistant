@@ -2,7 +2,6 @@ import asyncio
 import os
 import sys
 
-import tiktoken
 from dotenv import load_dotenv
 from loguru import logger
 from pypdf import PdfReader
@@ -25,19 +24,6 @@ load_dotenv(override=True)
 # Configure logger to output debug information to stderr
 logger.remove(0)
 logger.add(sys.stderr, level="DEBUG")
-
-
-# Function to truncate content based on the token limit of the model
-def truncate_content(content, model_name):
-    """Truncate content based on the token limit of the model."""
-    encoding = tiktoken.encoding_for_model(model_name)
-    tokens = encoding.encode(content)
-
-    max_tokens = 80000
-    if len(tokens) > max_tokens:
-        truncated_tokens = tokens[:max_tokens]
-        return encoding.decode(truncated_tokens)
-    return content
 
 
 def load_text(file_path):
@@ -90,9 +76,6 @@ async def main(room_url: str, token: str, language: str, article_content: str):
         raise ValueError(
             "Invalid language specified. Please use 'Arabic' or 'English'."
         )
-
-    # Truncate the document content if it exceeds the token limit
-    article_content = truncate_content(article_content, model_name="gpt-4o-mini")
 
     # Configure the session and transport for communication
 
