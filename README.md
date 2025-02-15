@@ -39,7 +39,7 @@ Create a .env file in the root directory with the following variables:
 DAILY_API_KEY=your_daily_api_key
 GLADIA_API_KEY=your_gladia_api_key
 ELEVEN_LABS_API_KEY=your_eleven_labs_api_key
-LLAMA_API_KEY=your_llama_api_key
+GROQ_API_KEY=your_groq_api_key
 ```
 Replace your_*_api_key with your actual API keys.
 
