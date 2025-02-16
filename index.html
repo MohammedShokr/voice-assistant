@@ -152,7 +152,6 @@
                     const data = await response.json();
                     responseBox.innerHTML = `
                         <p><strong>Room URL:</strong> <a href="${data.room_url}" target="_blank" style="word-wrap: break-word; overflow-wrap: break-word; display: inline-block; max-width: 100%;">${data.room_url}</a></p>
-                        <p><strong>Token:</strong> ${data.token}</p>
                     `;
                 } else {
                     const error = await response.json();
